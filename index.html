@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Friendship Worth Keeping</title>
+
+<style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(180deg,#0a0a0a,#1c120f,#2d1b17);
+color:#f5f5f5;
+overflow-x:hidden;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
+}
+
+/* ===== TITLE ===== */
+h1{
+font-size:clamp(35px,6vw,60px);
+color:#d7b899;
+margin-bottom:20px;
+}
+
+.subtitle{
+font-size:clamp(18px,3vw,24px);
+opacity:0.8;
+margin-bottom:50px;
+}
+
+/* ===== CARD ===== */
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:30px;
+margin:30px 0;
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ===== TIMER ===== */
+.timer{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.box{
+background:rgba(255,255,255,0.06);
+padding:15px;
+border-radius:12px;
+min-width:90px;
+}
+
+.number{
+font-size:26px;
+color:#d7b899;
+font-weight:bold;
+}
+
+.label{
+font-size:13px;
+opacity:0.7;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+padding:14px 28px;
+border:none;
+border-radius:12px;
+background:#8d6e63;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:#a1887f;
+}
+
+/* ===== ANIMATION ===== */
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ===== STARS ===== */
+.star{
+position:fixed;
+color:#d7b899;
+font-size:12px;
+animation:float 8s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="hidden">A Friendship Worth Keeping</h1>
+
+<p class="subtitle hidden">
+Some people enter our lives.<br>
+Very few become unforgettable.
+</p>
+
+<!-- TIMER -->
+<div class="card hidden">
+
+<h2 style="color:#d7b899;margin-bottom:20px;">
+Since May 16, 2026 — 12:05 AM
+</h2>
+
+<div class="timer">
+
+<div class="box"><div id="years" class="number">0</div><div class="label">Years</div></div>
+<div class="box"><div id="months" class="number">0</div><div class="label">Months</div></div>
+<div class="box"><div id="days" class="number">0</div><div class="label">Days</div></div>
+<div class="box"><div id="hours" class="number">0</div><div class="label">Hours</div></div>
+<div class="box"><div id="minutes" class="number">0</div><div class="label">Minutes</div></div>
+<div class="box"><div id="seconds" class="number">0</div><div class="label">Seconds</div></div>
+
+</div>
+</div>
+
+<!-- MESSAGES -->
+<div class="card hidden">
+<p>Your place in my life<br>will never change🥹</p>
+</div>
+
+<div class="card hidden">
+<p>
+Some friendships survive mistakes.<br><br>
+The special ones survive,<br>
+grow stronger,<br>
+and stay.
+</p>
+</div>
+
+<div class="card hidden">
+<p>I am grateful<br>that you came back.</p>
+</div>
+
+<div class="card hidden">
+<p>
+Not everyone who enters our life stays.<br><br>
+And not everyone who stays becomes important.<br><br>
+But somehow...<br><br>
+<b style="color:#d7b899;">You became both.</b>
+</p>
+</div>
+
+<!-- SECRET -->
+<div class="card hidden">
+
+<button id="openBtn" class="btn">Open This</button>
+
+<div id="secret" style="display:none;margin-top:25px;line-height:1.8;">
+
+<p>
+
+Thank you for giving me another chance🥹🥹.<br><br>
+
+Our friendship means more to me<br>
+than I can explain.<br><br>
+
+🖤🤎<br><br>
+
+────────────<br><br>
+
+Some friendships are simply worth keeping.<br><br>
+
+And I'm glad ours is one of them.<br><br>
+
+<span style="font-size:13px;opacity:0.7;">
+16 May 2026 • The beginning of a friendship worth keeping
+</span>
+
+</p>
+
+</div>
+
+</div>
+
+<!-- FINAL -->
+<div class="card hidden">
+<p>
+No matter how much time passes...<br><br>
+I will always be grateful<br>
+that our paths crossed.<br><br>
+🖤🤎
+<br><br>
+🐈‍⬛🐜
+</p>
+</div>
+
+</div>
+
+<script>
+
+/* TIMER */
+const startDate = new Date("2026-05-16T00:05:00");
+
+function updateTimer(){
+let now = new Date();
+let diff = now - startDate;
+
+let seconds = Math.floor(diff/1000);
+
+let years = Math.floor(seconds/(365*24*60*60));
+seconds -= years*(365*24*60*60);
+
+let months = Math.floor(seconds/(30*24*60*60));
+seconds -= months*(30*24*60*60);
+
+let days = Math.floor(seconds/(24*60*60));
+seconds -= days*(24*60*60);
+
+let hours = Math.floor(seconds/3600);
+seconds -= hours*3600;
+
+let minutes = Math.floor(seconds/60);
+seconds -= minutes*60;
+
+document.getElementById("years").innerText=years;
+document.getElementById("months").innerText=months;
+document.getElementById("days").innerText=days;
+document.getElementById("hours").innerText=hours;
+document.getElementById("minutes").innerText=minutes;
+document.getElementById("seconds").innerText=seconds;
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+/* SCROLL */
+const elements = document.querySelectorAll(".hidden");
+
+function reveal(){
+elements.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add("show");
+}
+});
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
+/* STARS */
+function createStar(){
+const star = document.createElement("div");
+star.className="star";
+star.innerHTML="✦";
+star.style.left=Math.random()*100+"vw";
+star.style.fontSize=(Math.random()*10+8)+"px";
+document.body.appendChild(star);
+
+setTimeout(()=>{star.remove();},8000);
+}
+
+setInterval(createStar,400);
+
+/* SECRET BUTTON */
+document.getElementById("openBtn").onclick=function(){
+document.getElementById("secret").style.display="block";
+}
+
+/* CELEBRATION */
+if(new Date().getDate()===16){
+document.body.style.background="linear-gradient(180deg,#1a0f0a,#3e2723,#5d4037)";
+}
+
+/* MUSIC */
+const audio=new Audio("music.mp3");
+audio.loop=true;
+audio.volume=0.2;
+
+document.body.addEventListener("click",()=>{
+audio.play();
+},{once:true});
+
+</script>
+
+</body>
+</html>
